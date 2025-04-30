@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqjgkhulju8xx"]
+
+[ext_resource type="Script" uid="uid://dfp55i82pnn0s" path="res://script/bebe.gd" id="1_pf7bj"]
+[ext_resource type="Texture2D" uid="uid://cau8terqqrtab" path="res://assetes/bebe.png" id="2_vi7ir"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rfkj"]
+atlas = ExtResource("2_vi7ir")
+region = Rect2(0, 0, 66, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54j28"]
+atlas = ExtResource("2_vi7ir")
+region = Rect2(66, 0, 66, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jen6v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rfkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54j28")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oerud"]
+radius = 6.0
+height = 22.0
+
+[node name="bebe" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_pf7bj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.38419e-07, -2)
+scale = Vector2(0.333333, 0.333333)
+sprite_frames = SubResource("SpriteFrames_jen6v")
+autoplay = "default"
+frame_progress = 0.61679
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, -2)
+shape = SubResource("CapsuleShape2D_oerud")

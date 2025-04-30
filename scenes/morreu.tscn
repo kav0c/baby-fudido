@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8lmgyl8ugvis"]
+
+[ext_resource type="Script" uid="uid://cpndo414jojb2" path="res://morreu.gd" id="1_2ehrt"]
+
+[node name="morreu" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_2ehrt")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

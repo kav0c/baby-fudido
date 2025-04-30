@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjicgvreg3scq"]
+
+[ext_resource type="Texture2D" uid="uid://bpujcadxbqo2k" path="res://assetes/cachorro inimigo.png" id="1_crrmn"]
+[ext_resource type="PackedScene" uid="uid://c8lmgyl8ugvis" path="res://scenes/morreu.tscn" id="2_7nmeo"]
+[ext_resource type="Script" uid="uid://be1hnc8vgg5kd" path="res://script/princesa.gd" id="2_lbkfx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbkfx"]
+size = Vector2(137.908, 63.1385)
+
+[node name="princesa" type="Sprite2D"]
+position = Vector2(-18.882, 9.75)
+scale = Vector2(0.421296, 0.421296)
+texture = ExtResource("1_crrmn")
+flip_h = true
+script = ExtResource("2_lbkfx")
+
+[node name="morreu" parent="." instance=ExtResource("2_7nmeo")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="morreu"]
+position = Vector2(1.28746e-05, 9.96923)
+shape = SubResource("RectangleShape2D_lbkfx")
+
+[node name="RayCast_e" type="RayCast2D" parent="."]
+target_position = Vector2(-88.0615, 0)
+
+[node name="RayCast_d" type="RayCast2D" parent="."]
+target_position = Vector2(83.0769, 0)
