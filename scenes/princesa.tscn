@@ -1,8 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjicgvreg3scq"]
+[gd_scene load_steps=8 format=3 uid="uid://cjicgvreg3scq"]
 
-[ext_resource type="Texture2D" uid="uid://bpujcadxbqo2k" path="res://assetes/cachorro inimigo.png" id="1_crrmn"]
 [ext_resource type="PackedScene" uid="uid://c8lmgyl8ugvis" path="res://scenes/morreu.tscn" id="2_7nmeo"]
 [ext_resource type="Script" uid="uid://be1hnc8vgg5kd" path="res://script/princesa.gd" id="2_lbkfx"]
+[ext_resource type="Texture2D" uid="uid://mgpa7gmn5ljt" path="res://assetes/princesa.png" id="2_umk1b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oim8x"]
+atlas = ExtResource("2_umk1b")
+region = Rect2(0, 0, 160, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vadif"]
+atlas = ExtResource("2_umk1b")
+region = Rect2(160, 0, 160, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x4233"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oim8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vadif")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbkfx"]
 size = Vector2(137.908, 63.1385)
@@ -10,14 +37,19 @@ size = Vector2(137.908, 63.1385)
 [node name="princesa" type="Sprite2D"]
 position = Vector2(-18.882, 9.75)
 scale = Vector2(0.421296, 0.421296)
-texture = ExtResource("1_crrmn")
 flip_h = true
 script = ExtResource("2_lbkfx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_x4233")
+animation = &"new_animation"
+frame_progress = 0.241079
 
 [node name="morreu" parent="." instance=ExtResource("2_7nmeo")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="morreu"]
-position = Vector2(1.28746e-05, 9.96923)
+position = Vector2(2.09355, 10.0879)
 shape = SubResource("RectangleShape2D_lbkfx")
 
 [node name="RayCast_e" type="RayCast2D" parent="."]
